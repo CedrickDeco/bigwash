@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+// Modèle User
+model User {
+  idUser   String   @id @default(uuid()) // Primary Key
+  nom      String
+  clerkId  String   @unique
+  email    String   @unique
+  role     String    @default("secretaire")
+  telephone String?
+  profilePicture  String?
+  password String
+  clients  Client[] // Relation 1:N : Un utilisateur peut creer plusieurs clients
+  createdAt  DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// Modèle Client
+model Client {
+  idClient   String   @id @default(uuid()) // Primary Key
+  nom        String
+  telephone  String?
+  createdAt  DateTime  @default(now())
+  user       User     @relation(fields: [userId], references: [idUser]) // Relation avec User
+  userId     String   // Clé étrangère vers User
+  lots       Lot[]    // Relation avec Lot (1:N)
+}
+
+// Modèle TypeVetement
+model TypeVetement {
+  idType     String    @id @default(uuid()) // Primary Key
+  nom        String
+  prix       Float
+  vetements  Vetement[] // Relation avec Vetement (1:N)
+}
+
+// Modèle Lot
+model Lot {
+  idLot       String    @id @default(uuid()) // Primary Key
+  dateEntree  DateTime  @default(now())
+  dateReccup  String
+  totalAmount Float
+  solde       Float
+  statut      String
+  client      Client    @relation(fields: [clientId], references: [idClient]) // Relation avec Client
+  clientId    String    // Clé étrangère vers Client
+  vetements   Vetement[] // Relation avec Vetement (1:N)
+  paiements   Paiement[] // Relation avec Paiement (1:N)
+  createdAt  DateTime  @default(now())
+}
+
+// Modèle Vetement
+model Vetement {
+  idVetement String    @id @default(uuid()) // Primary Key
+  description String
+  lot         Lot       @relation(fields: [lotId], references: [idLot]) // Relation avec Lot
+  lotId       String    // Clé étrangère vers Lot
+  type        TypeVetement @relation(fields: [typeId], references: [idType]) // Relation avec TypeVetement
+  typeId      String    // Clé étrangère vers TypeVetement
+}
+
+// Modèle Paiement
+model Paiement {
+  idPaiement String    @id @default(uuid()) // Primary Key
+  montant    Float
+  date       String
+  lot        Lot       @relation(fields: [lotId], references: [idLot]) // Relation avec Lot
+  lotId      String    // Clé étrangère vers Lot
+  createdAt  DateTime  @default(now())
+}

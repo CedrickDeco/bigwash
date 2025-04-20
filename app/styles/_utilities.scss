@@ -1,0 +1,28 @@
+.text-center {
+	text-align: center;
+}
+
+.flex-center {
+	@include flex-center;
+}
+
+.mt-lg {
+	margin-top: $mt-3;
+}
+.mb-lg {
+	margin-top: $mb-3;
+}
+
+.mb-md {
+	margin-bottom: $mb-2;
+}
+.mt-md {
+	margin-bottom: $mt-2;
+}
+
+.mb-sm {
+	margin-bottom: $mb-1;
+}
+.mt-sm {
+	margin-bottom: $mt-1;
+}
