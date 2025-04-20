@@ -1627,7 +1627,7 @@ export namespace Prisma {
     role: string
     telephone: string | null
     profilePicture: string | null
-    password: string
+    password: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1724,7 +1724,7 @@ export namespace Prisma {
       role: string
       telephone: string | null
       profilePicture: string | null
-      password: string
+      password: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -8279,7 +8279,7 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     telephone?: StringNullableFilter<"User"> | string | null
     profilePicture?: StringNullableFilter<"User"> | string | null
-    password?: StringFilter<"User"> | string
+    password?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     clients?: ClientListRelationFilter
@@ -8293,7 +8293,7 @@ export namespace Prisma {
     role?: SortOrder
     telephone?: SortOrderInput | SortOrder
     profilePicture?: SortOrderInput | SortOrder
-    password?: SortOrder
+    password?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clients?: ClientOrderByRelationAggregateInput
@@ -8310,7 +8310,7 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     telephone?: StringNullableFilter<"User"> | string | null
     profilePicture?: StringNullableFilter<"User"> | string | null
-    password?: StringFilter<"User"> | string
+    password?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     clients?: ClientListRelationFilter
@@ -8324,7 +8324,7 @@ export namespace Prisma {
     role?: SortOrder
     telephone?: SortOrderInput | SortOrder
     profilePicture?: SortOrderInput | SortOrder
-    password?: SortOrder
+    password?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -8343,7 +8343,7 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"User"> | string
     telephone?: StringNullableWithAggregatesFilter<"User"> | string | null
     profilePicture?: StringNullableWithAggregatesFilter<"User"> | string | null
-    password?: StringWithAggregatesFilter<"User"> | string
+    password?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -8649,7 +8649,7 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
+    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -8663,7 +8663,7 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
+    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -8677,7 +8677,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -8691,7 +8691,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -8705,7 +8705,7 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
+    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8718,7 +8718,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8731,7 +8731,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9892,7 +9892,7 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
+    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9905,7 +9905,7 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
+    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9968,7 +9968,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9981,7 +9981,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

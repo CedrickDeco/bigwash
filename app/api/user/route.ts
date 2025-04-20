@@ -1,9 +1,7 @@
-import { NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import path from 'path';
-import prisma from '@/lib/prisma';
-
-
+import { NextResponse } from "next/server";
+import { writeFile } from "fs/promises";
+import path from "path";
+import prisma from "@/lib/prisma";
 
 export async function POST(req: Request) {
   try {
@@ -11,18 +9,22 @@ export async function POST(req: Request) {
     const body = await req.json();
     console.log("📩 Requête API reçue :", body);
 
-    const { clerkId, firstName, lastName, email, profilePicture } = body;
+    const { clerkId, firstName, lastName, email, profilePicture, password } =
+      body;
 
     // Validation des champs obligatoires
     if (!clerkId || !email) {
       return NextResponse.json(
-        { error: "Champs obligatoires manquants : clerkId et email sont requis." },
+        {
+          error:
+            "Champs obligatoires manquants : clerkId et email sont requis.",
+        },
         { status: 400 }
       );
     }
 
     // Concaténer firstName et lastName pour créer le champ "nom"
-    const nom = `${firstName || ''} ${lastName || ''}`.trim() || 'Unknown';
+    const nom = `${firstName || ""} ${lastName || ""}`.trim() || "Unknown";
 
     // Vérifier si l'utilisateur existe déjà dans la base de données
     let user = await prisma.user.findUnique({
@@ -31,28 +33,40 @@ export async function POST(req: Request) {
     console.log("Contenu de user en haut====> :", user);
 
     // Gestion de la photo de profil
-    let localProfilePicturePath = '';
-    if (profilePicture && typeof profilePicture === 'string') {
+    let localProfilePicturePath = "";
+    if (profilePicture && typeof profilePicture === "string") {
       try {
         // Vérifier que profilePicture est une URL valide
         const url = new URL(profilePicture);
         const response = await fetch(url.toString());
 
         if (!response.ok) {
-          throw new Error(`Échec du téléchargement de l'image : ${response.statusText}`);
+          throw new Error(
+            `Échec du téléchargement de l'image : ${response.statusText}`
+          );
         }
 
         // Convertir la réponse en buffer
         const buffer = await response.arrayBuffer();
         const fileName = `${clerkId}-profile.jpg`; // Nom de fichier unique basé sur clerkId
-        const filePath = path.join(process.cwd(), 'public', 'uploads', fileName);
+        const filePath = path.join(
+          process.cwd(),
+          "public",
+          "uploads",
+          fileName
+        );
+
+        console.log("filePath====> :", filePath);
 
         // Écrire le fichier dans le répertoire uploads
         await writeFile(filePath, Buffer.from(buffer));
         localProfilePicturePath = `/uploads/${fileName}`; // Chemin relatif pour la base de données
       } catch (error) {
-        console.error('Erreur lors du téléchargement ou de l\'enregistrement de la photo de profil :', error);
-        localProfilePicturePath = ''; // En cas d'erreur, définir une valeur par défaut
+        console.error(
+          "Erreur lors du téléchargement ou de l'enregistrement de la photo de profil :",
+          error
+        );
+        localProfilePicturePath = ""; // En cas d'erreur, définir une valeur par défaut
       }
     }
 
@@ -65,7 +79,8 @@ export async function POST(req: Request) {
           nom,
           email,
           profilePicture: localProfilePicturePath,
-          role: 'secretaire', // Valeur par défaut
+          role: "secretaire", // Valeur par défaut
+          password: password || "",
         },
       });
       console.log("✅ Nouvel utilisateur créé :", user);
@@ -86,16 +101,9 @@ export async function POST(req: Request) {
     return NextResponse.json(user, { status: 200 });
   } catch (error) {
     console.error("❌ Erreur API :", error);
-    return NextResponse.json(
-      { error: "Erreur serveur" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
 }
-
-
-
-
 
 // // src/app/api/user/route.ts
 // import { getAuth } from '@clerk/nextjs/server';

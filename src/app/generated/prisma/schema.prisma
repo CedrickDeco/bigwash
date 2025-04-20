@@ -23,7 +23,7 @@ model User {
   role           String   @default("secretaire")
   telephone      String?
   profilePicture String?
-  password       String
+  password       String?
   clients        Client[] // Relation 1:N : Un utilisateur peut creer plusieurs clients
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
