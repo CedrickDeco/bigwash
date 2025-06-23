@@ -13,12 +13,12 @@ function Navbar() {
 	const { isLoaded, isSignedIn, user } = useUser();
 	const pathname = usePathname();
 
-
+      
   useEffect(() => {
     if (isLoaded && user) {
       // Envoyer une requête POST avec Axios pour enregistrer/mettre à jour les données de l'utilisateur
       axios
-        .post('/api/user', {
+        .post('/api/users/create', {
           clerkId: user.id,
           firstName: user.firstName,
           lastName: user.lastName,
@@ -37,14 +37,14 @@ function Navbar() {
 
 
 	return (
-		<div className="bg-base-200/30 px-5 md:px-[10%] py-2">
+		<div className="bgc px-5 md:px-[10%] py-1">
 			<div className="flex justify-between items-center">
 				{/* Logo */}
 				<div className="flex text-2xl items-center font-bold">
 					<Link href="/">
 						<div className="w-44 h-16 relative">
 							<Image
-								src="/logo.png"
+								src="/logo_bigwash.jpg"
 								alt="Logo"
 								fill
 								className="cursor-pointer object-contain"
@@ -69,7 +69,7 @@ function Navbar() {
 							</li>
 							<li>
 								<Link
-									href="/about"
+									href="/commande"
 									className={`nav-item text-gray-800  hover:text-blue-500  ${pathname ===
 									"/about"
 										? "active"

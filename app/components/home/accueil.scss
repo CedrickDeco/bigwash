@@ -1,0 +1,119 @@
+@use "../../styles/main.scss" as *;
+
+.home-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5%;
+	@media screen and (max-width: 695px) {
+		margin-top: 40%;
+		margin-bottom: 40%;
+	}
+	@media screen and (max-width: 390px) {
+		margin-top: 60%;
+	}
+	.content {
+		display: grid;
+		grid-template-columns: 45% 60%;
+		justify-content: center;
+		height: 70vh;
+		@media screen and (max-width: 695px) {
+			display: flex;
+			flex-direction: column;
+			height: 70vh;
+		}
+		.left {
+			border-radius: 30px 0 0 30px;
+			@media screen and (max-width: 695px) {
+				border-radius: 30px 30px 0 0;
+			}
+			.left-container {
+				padding-right: 6%;
+				@media screen and (max-width: 695px) {
+					padding-right: 0%;
+				}
+				.up {
+					display: flex;
+					justify-content: center;
+					.text-container {
+						p {
+							font-weight: bolder;
+							font-size: 1.8rem;
+							font-family: $bold-title;
+						}
+					}
+				}
+				.down {
+					margin-top: 25%;
+					@media screen and (max-width: 695px) {
+						margin: 10% auto;
+						@media screen and (max-width: 390px) {
+							margin-bottom: 20%;
+						}
+					}
+					.logo-container {
+						display: flex;
+						justify-content: center;
+						img {
+							height: 20%;
+							width: 90%;
+							object-fit: contain;
+							box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.3);
+						}
+					}
+				}
+			}
+		}
+		.right {
+			display: flex;
+			justify-content: center;
+			@media screen and (max-width: 695px) {
+				margin-left: 0;
+				margin-top: -1.75rem;
+			}
+			.right-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.content {
+					display: flex;
+					align-items: center;
+					.the-content {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						.text {
+							font-size: 2.3rem;
+							margin-top: 0%;
+							margin-bottom: 30%;
+						}
+						.buttons {
+							.btn-text {
+								padding: 10px 25px;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								font-size: 1.5rem;
+								color: $color_white;
+								border: solid 1px $col2;
+								border-radius: 10px;
+								cursor: pointer;
+								box-shadow: 3px 1px 14px 0px rgba(0, 0, 0, 0.3);
+								&:hover {
+									transform: scale(1.05);
+									transition: transform 0.5s ease-in-out;
+								}
+							}
+							.new {
+								margin-bottom: 20%;
+							}
+						}
+						.old {
+							margin-bottom: 20%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

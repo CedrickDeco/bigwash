@@ -9,8 +9,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        "col1": "#1da1e5",
+        "col1": "#5ebff0",
         "col2": "#e6eb2e",
+        "col3": "#12429B",
         "white1": "#fdfdfd",
         "neutral": "#f4ffff",
         "base-100": "#ffffff",

@@ -7,9 +7,17 @@ export default function SignInPage() {
 	const { isSignedIn } = useAuth();
 	const router = useRouter();
 
+	useEffect(
+		() => {
+			if (isSignedIn) {
+				router.push("/");
+			}
+		},
+		[isSignedIn, router]
+	);
+
 	// ✅ Redirection immédiate avant de rendre <SignIn />
 	if (isSignedIn) {
-		router.push("/"); // Rediriger vers la page souhaitée
 		return null; // Empêche le rendu de la page
 	}
 

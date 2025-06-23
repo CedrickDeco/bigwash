@@ -125,7 +125,6 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role',
   telephone: 'telephone',
   profilePicture: 'profilePicture',
-  password: 'password',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -141,7 +140,18 @@ exports.Prisma.ClientScalarFieldEnum = {
 exports.Prisma.TypeVetementScalarFieldEnum = {
   idType: 'idType',
   nom: 'nom',
-  prix: 'prix'
+  prix: 'prix',
+  etat: 'etat'
+};
+
+exports.Prisma.DepensesScalarFieldEnum = {
+  idDepenses: 'idDepenses',
+  beneficiaire: 'beneficiaire',
+  ordonanceur: 'ordonanceur',
+  raison: 'raison',
+  montant: 'montant',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.LotScalarFieldEnum = {
@@ -152,14 +162,19 @@ exports.Prisma.LotScalarFieldEnum = {
   solde: 'solde',
   statut: 'statut',
   clientId: 'clientId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.VetementScalarFieldEnum = {
   idVetement: 'idVetement',
   description: 'description',
+  statut: 'statut',
   lotId: 'lotId',
-  typeId: 'typeId'
+  prix: 'prix',
+  typeId: 'typeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.PaiementScalarFieldEnum = {
@@ -167,7 +182,8 @@ exports.Prisma.PaiementScalarFieldEnum = {
   montant: 'montant',
   date: 'date',
   lotId: 'lotId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -190,6 +206,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   Client: 'Client',
   TypeVetement: 'TypeVetement',
+  Depenses: 'Depenses',
   Lot: 'Lot',
   Vetement: 'Vetement',
   Paiement: 'Paiement'

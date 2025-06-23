@@ -23,7 +23,6 @@ model User {
   role           String   @default("secretaire")
   telephone      String?
   profilePicture String?
-  password       String?
   clients        Client[] // Relation 1:N : Un utilisateur peut creer plusieurs clients
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
@@ -45,7 +44,19 @@ model TypeVetement {
   idType    String     @id @default(uuid()) // Primary Key
   nom       String
   prix      Float
+  etat      String     @default("statique")
   vetements Vetement[] // Relation avec Vetement (1:N)
+}
+
+// Modèle Depenses
+model Depenses {
+  idDepenses   String   @id @default(uuid()) // Primary Key
+  beneficiaire String
+  ordonanceur  String
+  raison       String
+  montant      Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 // Modèle Lot
@@ -55,22 +66,27 @@ model Lot {
   dateReccup  String
   totalAmount Float
   solde       Float
-  statut      String
+  statut      String     @default("en cours")
   client      Client     @relation(fields: [clientId], references: [idClient]) // Relation avec Client
   clientId    String // Clé étrangère vers Client
   vetements   Vetement[] // Relation avec Vetement (1:N)
   paiements   Paiement[] // Relation avec Paiement (1:N)
   createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
 // Modèle Vetement
 model Vetement {
   idVetement  String       @id @default(uuid()) // Primary Key
   description String
+  statut      String       @default("en cours")
   lot         Lot          @relation(fields: [lotId], references: [idLot]) // Relation avec Lot
   lotId       String // Clé étrangère vers Lot
   type        TypeVetement @relation(fields: [typeId], references: [idType]) // Relation avec TypeVetement
+  prix        Float?
   typeId      String // Clé étrangère vers TypeVetement
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 // Modèle Paiement
@@ -81,4 +97,5 @@ model Paiement {
   lot        Lot      @relation(fields: [lotId], references: [idLot]) // Relation avec Lot
   lotId      String // Clé étrangère vers Lot
   createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }

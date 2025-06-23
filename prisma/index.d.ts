@@ -29,6 +29,11 @@ export type Client = $Result.DefaultSelection<Prisma.$ClientPayload>
  */
 export type TypeVetement = $Result.DefaultSelection<Prisma.$TypeVetementPayload>
 /**
+ * Model Depenses
+ * 
+ */
+export type Depenses = $Result.DefaultSelection<Prisma.$DepensesPayload>
+/**
  * Model Lot
  * 
  */
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get typeVetement(): Prisma.TypeVetementDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.depenses`: Exposes CRUD operations for the **Depenses** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Depenses
+    * const depenses = await prisma.depenses.findMany()
+    * ```
+    */
+  get depenses(): Prisma.DepensesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.lot`: Exposes CRUD operations for the **Lot** model.
@@ -671,6 +686,7 @@ export namespace Prisma {
     User: 'User',
     Client: 'Client',
     TypeVetement: 'TypeVetement',
+    Depenses: 'Depenses',
     Lot: 'Lot',
     Vetement: 'Vetement',
     Paiement: 'Paiement'
@@ -692,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "client" | "typeVetement" | "lot" | "vetement" | "paiement"
+      modelProps: "user" | "client" | "typeVetement" | "depenses" | "lot" | "vetement" | "paiement"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -915,6 +931,80 @@ export namespace Prisma {
           count: {
             args: Prisma.TypeVetementCountArgs<ExtArgs>
             result: $Utils.Optional<TypeVetementCountAggregateOutputType> | number
+          }
+        }
+      }
+      Depenses: {
+        payload: Prisma.$DepensesPayload<ExtArgs>
+        fields: Prisma.DepensesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DepensesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DepensesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>
+          }
+          findFirst: {
+            args: Prisma.DepensesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DepensesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>
+          }
+          findMany: {
+            args: Prisma.DepensesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>[]
+          }
+          create: {
+            args: Prisma.DepensesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>
+          }
+          createMany: {
+            args: Prisma.DepensesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DepensesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>[]
+          }
+          delete: {
+            args: Prisma.DepensesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>
+          }
+          update: {
+            args: Prisma.DepensesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>
+          }
+          deleteMany: {
+            args: Prisma.DepensesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DepensesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DepensesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>[]
+          }
+          upsert: {
+            args: Prisma.DepensesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepensesPayload>
+          }
+          aggregate: {
+            args: Prisma.DepensesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDepenses>
+          }
+          groupBy: {
+            args: Prisma.DepensesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DepensesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DepensesCountArgs<ExtArgs>
+            result: $Utils.Optional<DepensesCountAggregateOutputType> | number
           }
         }
       }
@@ -1227,6 +1317,7 @@ export namespace Prisma {
     user?: UserOmit
     client?: ClientOmit
     typeVetement?: TypeVetementOmit
+    depenses?: DepensesOmit
     lot?: LotOmit
     vetement?: VetementOmit
     paiement?: PaiementOmit
@@ -1474,7 +1565,6 @@ export namespace Prisma {
     role: string | null
     telephone: string | null
     profilePicture: string | null
-    password: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1487,7 +1577,6 @@ export namespace Prisma {
     role: string | null
     telephone: string | null
     profilePicture: string | null
-    password: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1500,7 +1589,6 @@ export namespace Prisma {
     role: number
     telephone: number
     profilePicture: number
-    password: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1515,7 +1603,6 @@ export namespace Prisma {
     role?: true
     telephone?: true
     profilePicture?: true
-    password?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1528,7 +1615,6 @@ export namespace Prisma {
     role?: true
     telephone?: true
     profilePicture?: true
-    password?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1541,7 +1627,6 @@ export namespace Prisma {
     role?: true
     telephone?: true
     profilePicture?: true
-    password?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1627,7 +1712,6 @@ export namespace Prisma {
     role: string
     telephone: string | null
     profilePicture: string | null
-    password: string
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1657,7 +1741,6 @@ export namespace Prisma {
     role?: boolean
     telephone?: boolean
     profilePicture?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     clients?: boolean | User$clientsArgs<ExtArgs>
@@ -1672,7 +1755,6 @@ export namespace Prisma {
     role?: boolean
     telephone?: boolean
     profilePicture?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1685,7 +1767,6 @@ export namespace Prisma {
     role?: boolean
     telephone?: boolean
     profilePicture?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1698,12 +1779,11 @@ export namespace Prisma {
     role?: boolean
     telephone?: boolean
     profilePicture?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idUser" | "nom" | "clerkId" | "email" | "role" | "telephone" | "profilePicture" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idUser" | "nom" | "clerkId" | "email" | "role" | "telephone" | "profilePicture" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     clients?: boolean | User$clientsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1724,7 +1804,6 @@ export namespace Prisma {
       role: string
       telephone: string | null
       profilePicture: string | null
-      password: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2158,7 +2237,6 @@ export namespace Prisma {
     readonly role: FieldRef<"User", 'String'>
     readonly telephone: FieldRef<"User", 'String'>
     readonly profilePicture: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -3703,18 +3781,21 @@ export namespace Prisma {
     idType: string | null
     nom: string | null
     prix: number | null
+    etat: string | null
   }
 
   export type TypeVetementMaxAggregateOutputType = {
     idType: string | null
     nom: string | null
     prix: number | null
+    etat: string | null
   }
 
   export type TypeVetementCountAggregateOutputType = {
     idType: number
     nom: number
     prix: number
+    etat: number
     _all: number
   }
 
@@ -3731,18 +3812,21 @@ export namespace Prisma {
     idType?: true
     nom?: true
     prix?: true
+    etat?: true
   }
 
   export type TypeVetementMaxAggregateInputType = {
     idType?: true
     nom?: true
     prix?: true
+    etat?: true
   }
 
   export type TypeVetementCountAggregateInputType = {
     idType?: true
     nom?: true
     prix?: true
+    etat?: true
     _all?: true
   }
 
@@ -3836,6 +3920,7 @@ export namespace Prisma {
     idType: string
     nom: string
     prix: number
+    etat: string
     _count: TypeVetementCountAggregateOutputType | null
     _avg: TypeVetementAvgAggregateOutputType | null
     _sum: TypeVetementSumAggregateOutputType | null
@@ -3861,6 +3946,7 @@ export namespace Prisma {
     idType?: boolean
     nom?: boolean
     prix?: boolean
+    etat?: boolean
     vetements?: boolean | TypeVetement$vetementsArgs<ExtArgs>
     _count?: boolean | TypeVetementCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["typeVetement"]>
@@ -3869,21 +3955,24 @@ export namespace Prisma {
     idType?: boolean
     nom?: boolean
     prix?: boolean
+    etat?: boolean
   }, ExtArgs["result"]["typeVetement"]>
 
   export type TypeVetementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     idType?: boolean
     nom?: boolean
     prix?: boolean
+    etat?: boolean
   }, ExtArgs["result"]["typeVetement"]>
 
   export type TypeVetementSelectScalar = {
     idType?: boolean
     nom?: boolean
     prix?: boolean
+    etat?: boolean
   }
 
-  export type TypeVetementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idType" | "nom" | "prix", ExtArgs["result"]["typeVetement"]>
+  export type TypeVetementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idType" | "nom" | "prix" | "etat", ExtArgs["result"]["typeVetement"]>
   export type TypeVetementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     vetements?: boolean | TypeVetement$vetementsArgs<ExtArgs>
     _count?: boolean | TypeVetementCountOutputTypeDefaultArgs<ExtArgs>
@@ -3900,6 +3989,7 @@ export namespace Prisma {
       idType: string
       nom: string
       prix: number
+      etat: string
     }, ExtArgs["result"]["typeVetement"]>
     composites: {}
   }
@@ -4327,6 +4417,7 @@ export namespace Prisma {
     readonly idType: FieldRef<"TypeVetement", 'String'>
     readonly nom: FieldRef<"TypeVetement", 'String'>
     readonly prix: FieldRef<"TypeVetement", 'Float'>
+    readonly etat: FieldRef<"TypeVetement", 'String'>
   }
     
 
@@ -4758,6 +4849,1061 @@ export namespace Prisma {
 
 
   /**
+   * Model Depenses
+   */
+
+  export type AggregateDepenses = {
+    _count: DepensesCountAggregateOutputType | null
+    _avg: DepensesAvgAggregateOutputType | null
+    _sum: DepensesSumAggregateOutputType | null
+    _min: DepensesMinAggregateOutputType | null
+    _max: DepensesMaxAggregateOutputType | null
+  }
+
+  export type DepensesAvgAggregateOutputType = {
+    montant: number | null
+  }
+
+  export type DepensesSumAggregateOutputType = {
+    montant: number | null
+  }
+
+  export type DepensesMinAggregateOutputType = {
+    idDepenses: string | null
+    beneficiaire: string | null
+    ordonanceur: string | null
+    raison: string | null
+    montant: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DepensesMaxAggregateOutputType = {
+    idDepenses: string | null
+    beneficiaire: string | null
+    ordonanceur: string | null
+    raison: string | null
+    montant: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DepensesCountAggregateOutputType = {
+    idDepenses: number
+    beneficiaire: number
+    ordonanceur: number
+    raison: number
+    montant: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DepensesAvgAggregateInputType = {
+    montant?: true
+  }
+
+  export type DepensesSumAggregateInputType = {
+    montant?: true
+  }
+
+  export type DepensesMinAggregateInputType = {
+    idDepenses?: true
+    beneficiaire?: true
+    ordonanceur?: true
+    raison?: true
+    montant?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DepensesMaxAggregateInputType = {
+    idDepenses?: true
+    beneficiaire?: true
+    ordonanceur?: true
+    raison?: true
+    montant?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DepensesCountAggregateInputType = {
+    idDepenses?: true
+    beneficiaire?: true
+    ordonanceur?: true
+    raison?: true
+    montant?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DepensesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Depenses to aggregate.
+     */
+    where?: DepensesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Depenses to fetch.
+     */
+    orderBy?: DepensesOrderByWithRelationInput | DepensesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DepensesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Depenses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Depenses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Depenses
+    **/
+    _count?: true | DepensesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DepensesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DepensesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DepensesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DepensesMaxAggregateInputType
+  }
+
+  export type GetDepensesAggregateType<T extends DepensesAggregateArgs> = {
+        [P in keyof T & keyof AggregateDepenses]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDepenses[P]>
+      : GetScalarType<T[P], AggregateDepenses[P]>
+  }
+
+
+
+
+  export type DepensesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepensesWhereInput
+    orderBy?: DepensesOrderByWithAggregationInput | DepensesOrderByWithAggregationInput[]
+    by: DepensesScalarFieldEnum[] | DepensesScalarFieldEnum
+    having?: DepensesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DepensesCountAggregateInputType | true
+    _avg?: DepensesAvgAggregateInputType
+    _sum?: DepensesSumAggregateInputType
+    _min?: DepensesMinAggregateInputType
+    _max?: DepensesMaxAggregateInputType
+  }
+
+  export type DepensesGroupByOutputType = {
+    idDepenses: string
+    beneficiaire: string
+    ordonanceur: string
+    raison: string
+    montant: number
+    createdAt: Date
+    updatedAt: Date
+    _count: DepensesCountAggregateOutputType | null
+    _avg: DepensesAvgAggregateOutputType | null
+    _sum: DepensesSumAggregateOutputType | null
+    _min: DepensesMinAggregateOutputType | null
+    _max: DepensesMaxAggregateOutputType | null
+  }
+
+  type GetDepensesGroupByPayload<T extends DepensesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DepensesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DepensesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DepensesGroupByOutputType[P]>
+            : GetScalarType<T[P], DepensesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DepensesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idDepenses?: boolean
+    beneficiaire?: boolean
+    ordonanceur?: boolean
+    raison?: boolean
+    montant?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["depenses"]>
+
+  export type DepensesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idDepenses?: boolean
+    beneficiaire?: boolean
+    ordonanceur?: boolean
+    raison?: boolean
+    montant?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["depenses"]>
+
+  export type DepensesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    idDepenses?: boolean
+    beneficiaire?: boolean
+    ordonanceur?: boolean
+    raison?: boolean
+    montant?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["depenses"]>
+
+  export type DepensesSelectScalar = {
+    idDepenses?: boolean
+    beneficiaire?: boolean
+    ordonanceur?: boolean
+    raison?: boolean
+    montant?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DepensesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idDepenses" | "beneficiaire" | "ordonanceur" | "raison" | "montant" | "createdAt" | "updatedAt", ExtArgs["result"]["depenses"]>
+
+  export type $DepensesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Depenses"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      idDepenses: string
+      beneficiaire: string
+      ordonanceur: string
+      raison: string
+      montant: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["depenses"]>
+    composites: {}
+  }
+
+  type DepensesGetPayload<S extends boolean | null | undefined | DepensesDefaultArgs> = $Result.GetResult<Prisma.$DepensesPayload, S>
+
+  type DepensesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DepensesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DepensesCountAggregateInputType | true
+    }
+
+  export interface DepensesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Depenses'], meta: { name: 'Depenses' } }
+    /**
+     * Find zero or one Depenses that matches the filter.
+     * @param {DepensesFindUniqueArgs} args - Arguments to find a Depenses
+     * @example
+     * // Get one Depenses
+     * const depenses = await prisma.depenses.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DepensesFindUniqueArgs>(args: SelectSubset<T, DepensesFindUniqueArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Depenses that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DepensesFindUniqueOrThrowArgs} args - Arguments to find a Depenses
+     * @example
+     * // Get one Depenses
+     * const depenses = await prisma.depenses.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DepensesFindUniqueOrThrowArgs>(args: SelectSubset<T, DepensesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Depenses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepensesFindFirstArgs} args - Arguments to find a Depenses
+     * @example
+     * // Get one Depenses
+     * const depenses = await prisma.depenses.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DepensesFindFirstArgs>(args?: SelectSubset<T, DepensesFindFirstArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Depenses that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepensesFindFirstOrThrowArgs} args - Arguments to find a Depenses
+     * @example
+     * // Get one Depenses
+     * const depenses = await prisma.depenses.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DepensesFindFirstOrThrowArgs>(args?: SelectSubset<T, DepensesFindFirstOrThrowArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Depenses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepensesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Depenses
+     * const depenses = await prisma.depenses.findMany()
+     * 
+     * // Get first 10 Depenses
+     * const depenses = await prisma.depenses.findMany({ take: 10 })
+     * 
+     * // Only select the `idDepenses`
+     * const depensesWithIdDepensesOnly = await prisma.depenses.findMany({ select: { idDepenses: true } })
+     * 
+     */
+    findMany<T extends DepensesFindManyArgs>(args?: SelectSubset<T, DepensesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Depenses.
+     * @param {DepensesCreateArgs} args - Arguments to create a Depenses.
+     * @example
+     * // Create one Depenses
+     * const Depenses = await prisma.depenses.create({
+     *   data: {
+     *     // ... data to create a Depenses
+     *   }
+     * })
+     * 
+     */
+    create<T extends DepensesCreateArgs>(args: SelectSubset<T, DepensesCreateArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Depenses.
+     * @param {DepensesCreateManyArgs} args - Arguments to create many Depenses.
+     * @example
+     * // Create many Depenses
+     * const depenses = await prisma.depenses.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DepensesCreateManyArgs>(args?: SelectSubset<T, DepensesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Depenses and returns the data saved in the database.
+     * @param {DepensesCreateManyAndReturnArgs} args - Arguments to create many Depenses.
+     * @example
+     * // Create many Depenses
+     * const depenses = await prisma.depenses.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Depenses and only return the `idDepenses`
+     * const depensesWithIdDepensesOnly = await prisma.depenses.createManyAndReturn({
+     *   select: { idDepenses: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DepensesCreateManyAndReturnArgs>(args?: SelectSubset<T, DepensesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Depenses.
+     * @param {DepensesDeleteArgs} args - Arguments to delete one Depenses.
+     * @example
+     * // Delete one Depenses
+     * const Depenses = await prisma.depenses.delete({
+     *   where: {
+     *     // ... filter to delete one Depenses
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DepensesDeleteArgs>(args: SelectSubset<T, DepensesDeleteArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Depenses.
+     * @param {DepensesUpdateArgs} args - Arguments to update one Depenses.
+     * @example
+     * // Update one Depenses
+     * const depenses = await prisma.depenses.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DepensesUpdateArgs>(args: SelectSubset<T, DepensesUpdateArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Depenses.
+     * @param {DepensesDeleteManyArgs} args - Arguments to filter Depenses to delete.
+     * @example
+     * // Delete a few Depenses
+     * const { count } = await prisma.depenses.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DepensesDeleteManyArgs>(args?: SelectSubset<T, DepensesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Depenses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepensesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Depenses
+     * const depenses = await prisma.depenses.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DepensesUpdateManyArgs>(args: SelectSubset<T, DepensesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Depenses and returns the data updated in the database.
+     * @param {DepensesUpdateManyAndReturnArgs} args - Arguments to update many Depenses.
+     * @example
+     * // Update many Depenses
+     * const depenses = await prisma.depenses.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Depenses and only return the `idDepenses`
+     * const depensesWithIdDepensesOnly = await prisma.depenses.updateManyAndReturn({
+     *   select: { idDepenses: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DepensesUpdateManyAndReturnArgs>(args: SelectSubset<T, DepensesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Depenses.
+     * @param {DepensesUpsertArgs} args - Arguments to update or create a Depenses.
+     * @example
+     * // Update or create a Depenses
+     * const depenses = await prisma.depenses.upsert({
+     *   create: {
+     *     // ... data to create a Depenses
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Depenses we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DepensesUpsertArgs>(args: SelectSubset<T, DepensesUpsertArgs<ExtArgs>>): Prisma__DepensesClient<$Result.GetResult<Prisma.$DepensesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Depenses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepensesCountArgs} args - Arguments to filter Depenses to count.
+     * @example
+     * // Count the number of Depenses
+     * const count = await prisma.depenses.count({
+     *   where: {
+     *     // ... the filter for the Depenses we want to count
+     *   }
+     * })
+    **/
+    count<T extends DepensesCountArgs>(
+      args?: Subset<T, DepensesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DepensesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Depenses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepensesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DepensesAggregateArgs>(args: Subset<T, DepensesAggregateArgs>): Prisma.PrismaPromise<GetDepensesAggregateType<T>>
+
+    /**
+     * Group by Depenses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepensesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DepensesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DepensesGroupByArgs['orderBy'] }
+        : { orderBy?: DepensesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DepensesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDepensesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Depenses model
+   */
+  readonly fields: DepensesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Depenses.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DepensesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Depenses model
+   */
+  interface DepensesFieldRefs {
+    readonly idDepenses: FieldRef<"Depenses", 'String'>
+    readonly beneficiaire: FieldRef<"Depenses", 'String'>
+    readonly ordonanceur: FieldRef<"Depenses", 'String'>
+    readonly raison: FieldRef<"Depenses", 'String'>
+    readonly montant: FieldRef<"Depenses", 'Float'>
+    readonly createdAt: FieldRef<"Depenses", 'DateTime'>
+    readonly updatedAt: FieldRef<"Depenses", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Depenses findUnique
+   */
+  export type DepensesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * Filter, which Depenses to fetch.
+     */
+    where: DepensesWhereUniqueInput
+  }
+
+  /**
+   * Depenses findUniqueOrThrow
+   */
+  export type DepensesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * Filter, which Depenses to fetch.
+     */
+    where: DepensesWhereUniqueInput
+  }
+
+  /**
+   * Depenses findFirst
+   */
+  export type DepensesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * Filter, which Depenses to fetch.
+     */
+    where?: DepensesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Depenses to fetch.
+     */
+    orderBy?: DepensesOrderByWithRelationInput | DepensesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Depenses.
+     */
+    cursor?: DepensesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Depenses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Depenses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Depenses.
+     */
+    distinct?: DepensesScalarFieldEnum | DepensesScalarFieldEnum[]
+  }
+
+  /**
+   * Depenses findFirstOrThrow
+   */
+  export type DepensesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * Filter, which Depenses to fetch.
+     */
+    where?: DepensesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Depenses to fetch.
+     */
+    orderBy?: DepensesOrderByWithRelationInput | DepensesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Depenses.
+     */
+    cursor?: DepensesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Depenses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Depenses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Depenses.
+     */
+    distinct?: DepensesScalarFieldEnum | DepensesScalarFieldEnum[]
+  }
+
+  /**
+   * Depenses findMany
+   */
+  export type DepensesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * Filter, which Depenses to fetch.
+     */
+    where?: DepensesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Depenses to fetch.
+     */
+    orderBy?: DepensesOrderByWithRelationInput | DepensesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Depenses.
+     */
+    cursor?: DepensesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Depenses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Depenses.
+     */
+    skip?: number
+    distinct?: DepensesScalarFieldEnum | DepensesScalarFieldEnum[]
+  }
+
+  /**
+   * Depenses create
+   */
+  export type DepensesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Depenses.
+     */
+    data: XOR<DepensesCreateInput, DepensesUncheckedCreateInput>
+  }
+
+  /**
+   * Depenses createMany
+   */
+  export type DepensesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Depenses.
+     */
+    data: DepensesCreateManyInput | DepensesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Depenses createManyAndReturn
+   */
+  export type DepensesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Depenses.
+     */
+    data: DepensesCreateManyInput | DepensesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Depenses update
+   */
+  export type DepensesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Depenses.
+     */
+    data: XOR<DepensesUpdateInput, DepensesUncheckedUpdateInput>
+    /**
+     * Choose, which Depenses to update.
+     */
+    where: DepensesWhereUniqueInput
+  }
+
+  /**
+   * Depenses updateMany
+   */
+  export type DepensesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Depenses.
+     */
+    data: XOR<DepensesUpdateManyMutationInput, DepensesUncheckedUpdateManyInput>
+    /**
+     * Filter which Depenses to update
+     */
+    where?: DepensesWhereInput
+    /**
+     * Limit how many Depenses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Depenses updateManyAndReturn
+   */
+  export type DepensesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * The data used to update Depenses.
+     */
+    data: XOR<DepensesUpdateManyMutationInput, DepensesUncheckedUpdateManyInput>
+    /**
+     * Filter which Depenses to update
+     */
+    where?: DepensesWhereInput
+    /**
+     * Limit how many Depenses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Depenses upsert
+   */
+  export type DepensesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Depenses to update in case it exists.
+     */
+    where: DepensesWhereUniqueInput
+    /**
+     * In case the Depenses found by the `where` argument doesn't exist, create a new Depenses with this data.
+     */
+    create: XOR<DepensesCreateInput, DepensesUncheckedCreateInput>
+    /**
+     * In case the Depenses was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DepensesUpdateInput, DepensesUncheckedUpdateInput>
+  }
+
+  /**
+   * Depenses delete
+   */
+  export type DepensesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+    /**
+     * Filter which Depenses to delete.
+     */
+    where: DepensesWhereUniqueInput
+  }
+
+  /**
+   * Depenses deleteMany
+   */
+  export type DepensesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Depenses to delete
+     */
+    where?: DepensesWhereInput
+    /**
+     * Limit how many Depenses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Depenses without action
+   */
+  export type DepensesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Depenses
+     */
+    select?: DepensesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Depenses
+     */
+    omit?: DepensesOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model Lot
    */
 
@@ -4788,6 +5934,7 @@ export namespace Prisma {
     statut: string | null
     clientId: string | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type LotMaxAggregateOutputType = {
@@ -4799,6 +5946,7 @@ export namespace Prisma {
     statut: string | null
     clientId: string | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type LotCountAggregateOutputType = {
@@ -4810,6 +5958,7 @@ export namespace Prisma {
     statut: number
     clientId: number
     createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -4833,6 +5982,7 @@ export namespace Prisma {
     statut?: true
     clientId?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type LotMaxAggregateInputType = {
@@ -4844,6 +5994,7 @@ export namespace Prisma {
     statut?: true
     clientId?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type LotCountAggregateInputType = {
@@ -4855,6 +6006,7 @@ export namespace Prisma {
     statut?: true
     clientId?: true
     createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -4953,6 +6105,7 @@ export namespace Prisma {
     statut: string
     clientId: string
     createdAt: Date
+    updatedAt: Date
     _count: LotCountAggregateOutputType | null
     _avg: LotAvgAggregateOutputType | null
     _sum: LotSumAggregateOutputType | null
@@ -4983,6 +6136,7 @@ export namespace Prisma {
     statut?: boolean
     clientId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     client?: boolean | ClientDefaultArgs<ExtArgs>
     vetements?: boolean | Lot$vetementsArgs<ExtArgs>
     paiements?: boolean | Lot$paiementsArgs<ExtArgs>
@@ -4998,6 +6152,7 @@ export namespace Prisma {
     statut?: boolean
     clientId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     client?: boolean | ClientDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lot"]>
 
@@ -5010,6 +6165,7 @@ export namespace Prisma {
     statut?: boolean
     clientId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     client?: boolean | ClientDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lot"]>
 
@@ -5022,9 +6178,10 @@ export namespace Prisma {
     statut?: boolean
     clientId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type LotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idLot" | "dateEntree" | "dateReccup" | "totalAmount" | "solde" | "statut" | "clientId" | "createdAt", ExtArgs["result"]["lot"]>
+  export type LotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idLot" | "dateEntree" | "dateReccup" | "totalAmount" | "solde" | "statut" | "clientId" | "createdAt" | "updatedAt", ExtArgs["result"]["lot"]>
   export type LotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     client?: boolean | ClientDefaultArgs<ExtArgs>
     vetements?: boolean | Lot$vetementsArgs<ExtArgs>
@@ -5054,6 +6211,7 @@ export namespace Prisma {
       statut: string
       clientId: string
       createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["lot"]>
     composites: {}
   }
@@ -5488,6 +6646,7 @@ export namespace Prisma {
     readonly statut: FieldRef<"Lot", 'String'>
     readonly clientId: FieldRef<"Lot", 'String'>
     readonly createdAt: FieldRef<"Lot", 'DateTime'>
+    readonly updatedAt: FieldRef<"Lot", 'DateTime'>
   }
     
 
@@ -5956,52 +7115,94 @@ export namespace Prisma {
 
   export type AggregateVetement = {
     _count: VetementCountAggregateOutputType | null
+    _avg: VetementAvgAggregateOutputType | null
+    _sum: VetementSumAggregateOutputType | null
     _min: VetementMinAggregateOutputType | null
     _max: VetementMaxAggregateOutputType | null
+  }
+
+  export type VetementAvgAggregateOutputType = {
+    prix: number | null
+  }
+
+  export type VetementSumAggregateOutputType = {
+    prix: number | null
   }
 
   export type VetementMinAggregateOutputType = {
     idVetement: string | null
     description: string | null
+    statut: string | null
     lotId: string | null
+    prix: number | null
     typeId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type VetementMaxAggregateOutputType = {
     idVetement: string | null
     description: string | null
+    statut: string | null
     lotId: string | null
+    prix: number | null
     typeId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type VetementCountAggregateOutputType = {
     idVetement: number
     description: number
+    statut: number
     lotId: number
+    prix: number
     typeId: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
+  export type VetementAvgAggregateInputType = {
+    prix?: true
+  }
+
+  export type VetementSumAggregateInputType = {
+    prix?: true
+  }
+
   export type VetementMinAggregateInputType = {
     idVetement?: true
     description?: true
+    statut?: true
     lotId?: true
+    prix?: true
     typeId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type VetementMaxAggregateInputType = {
     idVetement?: true
     description?: true
+    statut?: true
     lotId?: true
+    prix?: true
     typeId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type VetementCountAggregateInputType = {
     idVetement?: true
     description?: true
+    statut?: true
     lotId?: true
+    prix?: true
     typeId?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -6043,6 +7244,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: VetementAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VetementSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: VetementMinAggregateInputType
@@ -6073,6 +7286,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: VetementCountAggregateInputType | true
+    _avg?: VetementAvgAggregateInputType
+    _sum?: VetementSumAggregateInputType
     _min?: VetementMinAggregateInputType
     _max?: VetementMaxAggregateInputType
   }
@@ -6080,9 +7295,15 @@ export namespace Prisma {
   export type VetementGroupByOutputType = {
     idVetement: string
     description: string
+    statut: string
     lotId: string
+    prix: number | null
     typeId: string
+    createdAt: Date
+    updatedAt: Date
     _count: VetementCountAggregateOutputType | null
+    _avg: VetementAvgAggregateOutputType | null
+    _sum: VetementSumAggregateOutputType | null
     _min: VetementMinAggregateOutputType | null
     _max: VetementMaxAggregateOutputType | null
   }
@@ -6104,8 +7325,12 @@ export namespace Prisma {
   export type VetementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     idVetement?: boolean
     description?: boolean
+    statut?: boolean
     lotId?: boolean
+    prix?: boolean
     typeId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     lot?: boolean | LotDefaultArgs<ExtArgs>
     type?: boolean | TypeVetementDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vetement"]>
@@ -6113,8 +7338,12 @@ export namespace Prisma {
   export type VetementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     idVetement?: boolean
     description?: boolean
+    statut?: boolean
     lotId?: boolean
+    prix?: boolean
     typeId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     lot?: boolean | LotDefaultArgs<ExtArgs>
     type?: boolean | TypeVetementDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vetement"]>
@@ -6122,8 +7351,12 @@ export namespace Prisma {
   export type VetementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     idVetement?: boolean
     description?: boolean
+    statut?: boolean
     lotId?: boolean
+    prix?: boolean
     typeId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     lot?: boolean | LotDefaultArgs<ExtArgs>
     type?: boolean | TypeVetementDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["vetement"]>
@@ -6131,11 +7364,15 @@ export namespace Prisma {
   export type VetementSelectScalar = {
     idVetement?: boolean
     description?: boolean
+    statut?: boolean
     lotId?: boolean
+    prix?: boolean
     typeId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type VetementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idVetement" | "description" | "lotId" | "typeId", ExtArgs["result"]["vetement"]>
+  export type VetementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idVetement" | "description" | "statut" | "lotId" | "prix" | "typeId" | "createdAt" | "updatedAt", ExtArgs["result"]["vetement"]>
   export type VetementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     lot?: boolean | LotDefaultArgs<ExtArgs>
     type?: boolean | TypeVetementDefaultArgs<ExtArgs>
@@ -6158,8 +7395,12 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       idVetement: string
       description: string
+      statut: string
       lotId: string
+      prix: number | null
       typeId: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["vetement"]>
     composites: {}
   }
@@ -6587,8 +7828,12 @@ export namespace Prisma {
   interface VetementFieldRefs {
     readonly idVetement: FieldRef<"Vetement", 'String'>
     readonly description: FieldRef<"Vetement", 'String'>
+    readonly statut: FieldRef<"Vetement", 'String'>
     readonly lotId: FieldRef<"Vetement", 'String'>
+    readonly prix: FieldRef<"Vetement", 'Float'>
     readonly typeId: FieldRef<"Vetement", 'String'>
+    readonly createdAt: FieldRef<"Vetement", 'DateTime'>
+    readonly updatedAt: FieldRef<"Vetement", 'DateTime'>
   }
     
 
@@ -7029,6 +8274,7 @@ export namespace Prisma {
     date: string | null
     lotId: string | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PaiementMaxAggregateOutputType = {
@@ -7037,6 +8283,7 @@ export namespace Prisma {
     date: string | null
     lotId: string | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PaiementCountAggregateOutputType = {
@@ -7045,6 +8292,7 @@ export namespace Prisma {
     date: number
     lotId: number
     createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -7063,6 +8311,7 @@ export namespace Prisma {
     date?: true
     lotId?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type PaiementMaxAggregateInputType = {
@@ -7071,6 +8320,7 @@ export namespace Prisma {
     date?: true
     lotId?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type PaiementCountAggregateInputType = {
@@ -7079,6 +8329,7 @@ export namespace Prisma {
     date?: true
     lotId?: true
     createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -7174,6 +8425,7 @@ export namespace Prisma {
     date: string
     lotId: string
     createdAt: Date
+    updatedAt: Date
     _count: PaiementCountAggregateOutputType | null
     _avg: PaiementAvgAggregateOutputType | null
     _sum: PaiementSumAggregateOutputType | null
@@ -7201,6 +8453,7 @@ export namespace Prisma {
     date?: boolean
     lotId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     lot?: boolean | LotDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["paiement"]>
 
@@ -7210,6 +8463,7 @@ export namespace Prisma {
     date?: boolean
     lotId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     lot?: boolean | LotDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["paiement"]>
 
@@ -7219,6 +8473,7 @@ export namespace Prisma {
     date?: boolean
     lotId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     lot?: boolean | LotDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["paiement"]>
 
@@ -7228,9 +8483,10 @@ export namespace Prisma {
     date?: boolean
     lotId?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type PaiementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idPaiement" | "montant" | "date" | "lotId" | "createdAt", ExtArgs["result"]["paiement"]>
+  export type PaiementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"idPaiement" | "montant" | "date" | "lotId" | "createdAt" | "updatedAt", ExtArgs["result"]["paiement"]>
   export type PaiementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     lot?: boolean | LotDefaultArgs<ExtArgs>
   }
@@ -7252,6 +8508,7 @@ export namespace Prisma {
       date: string
       lotId: string
       createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["paiement"]>
     composites: {}
   }
@@ -7681,6 +8938,7 @@ export namespace Prisma {
     readonly date: FieldRef<"Paiement", 'String'>
     readonly lotId: FieldRef<"Paiement", 'String'>
     readonly createdAt: FieldRef<"Paiement", 'DateTime'>
+    readonly updatedAt: FieldRef<"Paiement", 'DateTime'>
   }
     
 
@@ -8117,7 +9375,6 @@ export namespace Prisma {
     role: 'role',
     telephone: 'telephone',
     profilePicture: 'profilePicture',
-    password: 'password',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8139,10 +9396,24 @@ export namespace Prisma {
   export const TypeVetementScalarFieldEnum: {
     idType: 'idType',
     nom: 'nom',
-    prix: 'prix'
+    prix: 'prix',
+    etat: 'etat'
   };
 
   export type TypeVetementScalarFieldEnum = (typeof TypeVetementScalarFieldEnum)[keyof typeof TypeVetementScalarFieldEnum]
+
+
+  export const DepensesScalarFieldEnum: {
+    idDepenses: 'idDepenses',
+    beneficiaire: 'beneficiaire',
+    ordonanceur: 'ordonanceur',
+    raison: 'raison',
+    montant: 'montant',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DepensesScalarFieldEnum = (typeof DepensesScalarFieldEnum)[keyof typeof DepensesScalarFieldEnum]
 
 
   export const LotScalarFieldEnum: {
@@ -8153,7 +9424,8 @@ export namespace Prisma {
     solde: 'solde',
     statut: 'statut',
     clientId: 'clientId',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type LotScalarFieldEnum = (typeof LotScalarFieldEnum)[keyof typeof LotScalarFieldEnum]
@@ -8162,8 +9434,12 @@ export namespace Prisma {
   export const VetementScalarFieldEnum: {
     idVetement: 'idVetement',
     description: 'description',
+    statut: 'statut',
     lotId: 'lotId',
-    typeId: 'typeId'
+    prix: 'prix',
+    typeId: 'typeId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type VetementScalarFieldEnum = (typeof VetementScalarFieldEnum)[keyof typeof VetementScalarFieldEnum]
@@ -8174,7 +9450,8 @@ export namespace Prisma {
     montant: 'montant',
     date: 'date',
     lotId: 'lotId',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type PaiementScalarFieldEnum = (typeof PaiementScalarFieldEnum)[keyof typeof PaiementScalarFieldEnum]
@@ -8279,7 +9556,6 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     telephone?: StringNullableFilter<"User"> | string | null
     profilePicture?: StringNullableFilter<"User"> | string | null
-    password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     clients?: ClientListRelationFilter
@@ -8293,7 +9569,6 @@ export namespace Prisma {
     role?: SortOrder
     telephone?: SortOrderInput | SortOrder
     profilePicture?: SortOrderInput | SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clients?: ClientOrderByRelationAggregateInput
@@ -8310,7 +9585,6 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     telephone?: StringNullableFilter<"User"> | string | null
     profilePicture?: StringNullableFilter<"User"> | string | null
-    password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     clients?: ClientListRelationFilter
@@ -8324,7 +9598,6 @@ export namespace Prisma {
     role?: SortOrder
     telephone?: SortOrderInput | SortOrder
     profilePicture?: SortOrderInput | SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -8343,7 +9616,6 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"User"> | string
     telephone?: StringNullableWithAggregatesFilter<"User"> | string | null
     profilePicture?: StringNullableWithAggregatesFilter<"User"> | string | null
-    password?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -8413,6 +9685,7 @@ export namespace Prisma {
     idType?: StringFilter<"TypeVetement"> | string
     nom?: StringFilter<"TypeVetement"> | string
     prix?: FloatFilter<"TypeVetement"> | number
+    etat?: StringFilter<"TypeVetement"> | string
     vetements?: VetementListRelationFilter
   }
 
@@ -8420,6 +9693,7 @@ export namespace Prisma {
     idType?: SortOrder
     nom?: SortOrder
     prix?: SortOrder
+    etat?: SortOrder
     vetements?: VetementOrderByRelationAggregateInput
   }
 
@@ -8430,6 +9704,7 @@ export namespace Prisma {
     NOT?: TypeVetementWhereInput | TypeVetementWhereInput[]
     nom?: StringFilter<"TypeVetement"> | string
     prix?: FloatFilter<"TypeVetement"> | number
+    etat?: StringFilter<"TypeVetement"> | string
     vetements?: VetementListRelationFilter
   }, "idType">
 
@@ -8437,6 +9712,7 @@ export namespace Prisma {
     idType?: SortOrder
     nom?: SortOrder
     prix?: SortOrder
+    etat?: SortOrder
     _count?: TypeVetementCountOrderByAggregateInput
     _avg?: TypeVetementAvgOrderByAggregateInput
     _max?: TypeVetementMaxOrderByAggregateInput
@@ -8451,6 +9727,71 @@ export namespace Prisma {
     idType?: StringWithAggregatesFilter<"TypeVetement"> | string
     nom?: StringWithAggregatesFilter<"TypeVetement"> | string
     prix?: FloatWithAggregatesFilter<"TypeVetement"> | number
+    etat?: StringWithAggregatesFilter<"TypeVetement"> | string
+  }
+
+  export type DepensesWhereInput = {
+    AND?: DepensesWhereInput | DepensesWhereInput[]
+    OR?: DepensesWhereInput[]
+    NOT?: DepensesWhereInput | DepensesWhereInput[]
+    idDepenses?: StringFilter<"Depenses"> | string
+    beneficiaire?: StringFilter<"Depenses"> | string
+    ordonanceur?: StringFilter<"Depenses"> | string
+    raison?: StringFilter<"Depenses"> | string
+    montant?: FloatFilter<"Depenses"> | number
+    createdAt?: DateTimeFilter<"Depenses"> | Date | string
+    updatedAt?: DateTimeFilter<"Depenses"> | Date | string
+  }
+
+  export type DepensesOrderByWithRelationInput = {
+    idDepenses?: SortOrder
+    beneficiaire?: SortOrder
+    ordonanceur?: SortOrder
+    raison?: SortOrder
+    montant?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepensesWhereUniqueInput = Prisma.AtLeast<{
+    idDepenses?: string
+    AND?: DepensesWhereInput | DepensesWhereInput[]
+    OR?: DepensesWhereInput[]
+    NOT?: DepensesWhereInput | DepensesWhereInput[]
+    beneficiaire?: StringFilter<"Depenses"> | string
+    ordonanceur?: StringFilter<"Depenses"> | string
+    raison?: StringFilter<"Depenses"> | string
+    montant?: FloatFilter<"Depenses"> | number
+    createdAt?: DateTimeFilter<"Depenses"> | Date | string
+    updatedAt?: DateTimeFilter<"Depenses"> | Date | string
+  }, "idDepenses">
+
+  export type DepensesOrderByWithAggregationInput = {
+    idDepenses?: SortOrder
+    beneficiaire?: SortOrder
+    ordonanceur?: SortOrder
+    raison?: SortOrder
+    montant?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DepensesCountOrderByAggregateInput
+    _avg?: DepensesAvgOrderByAggregateInput
+    _max?: DepensesMaxOrderByAggregateInput
+    _min?: DepensesMinOrderByAggregateInput
+    _sum?: DepensesSumOrderByAggregateInput
+  }
+
+  export type DepensesScalarWhereWithAggregatesInput = {
+    AND?: DepensesScalarWhereWithAggregatesInput | DepensesScalarWhereWithAggregatesInput[]
+    OR?: DepensesScalarWhereWithAggregatesInput[]
+    NOT?: DepensesScalarWhereWithAggregatesInput | DepensesScalarWhereWithAggregatesInput[]
+    idDepenses?: StringWithAggregatesFilter<"Depenses"> | string
+    beneficiaire?: StringWithAggregatesFilter<"Depenses"> | string
+    ordonanceur?: StringWithAggregatesFilter<"Depenses"> | string
+    raison?: StringWithAggregatesFilter<"Depenses"> | string
+    montant?: FloatWithAggregatesFilter<"Depenses"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Depenses"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Depenses"> | Date | string
   }
 
   export type LotWhereInput = {
@@ -8465,6 +9806,7 @@ export namespace Prisma {
     statut?: StringFilter<"Lot"> | string
     clientId?: StringFilter<"Lot"> | string
     createdAt?: DateTimeFilter<"Lot"> | Date | string
+    updatedAt?: DateTimeFilter<"Lot"> | Date | string
     client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
     vetements?: VetementListRelationFilter
     paiements?: PaiementListRelationFilter
@@ -8479,6 +9821,7 @@ export namespace Prisma {
     statut?: SortOrder
     clientId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     client?: ClientOrderByWithRelationInput
     vetements?: VetementOrderByRelationAggregateInput
     paiements?: PaiementOrderByRelationAggregateInput
@@ -8496,6 +9839,7 @@ export namespace Prisma {
     statut?: StringFilter<"Lot"> | string
     clientId?: StringFilter<"Lot"> | string
     createdAt?: DateTimeFilter<"Lot"> | Date | string
+    updatedAt?: DateTimeFilter<"Lot"> | Date | string
     client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
     vetements?: VetementListRelationFilter
     paiements?: PaiementListRelationFilter
@@ -8510,6 +9854,7 @@ export namespace Prisma {
     statut?: SortOrder
     clientId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: LotCountOrderByAggregateInput
     _avg?: LotAvgOrderByAggregateInput
     _max?: LotMaxOrderByAggregateInput
@@ -8529,6 +9874,7 @@ export namespace Prisma {
     statut?: StringWithAggregatesFilter<"Lot"> | string
     clientId?: StringWithAggregatesFilter<"Lot"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Lot"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Lot"> | Date | string
   }
 
   export type VetementWhereInput = {
@@ -8537,8 +9883,12 @@ export namespace Prisma {
     NOT?: VetementWhereInput | VetementWhereInput[]
     idVetement?: StringFilter<"Vetement"> | string
     description?: StringFilter<"Vetement"> | string
+    statut?: StringFilter<"Vetement"> | string
     lotId?: StringFilter<"Vetement"> | string
+    prix?: FloatNullableFilter<"Vetement"> | number | null
     typeId?: StringFilter<"Vetement"> | string
+    createdAt?: DateTimeFilter<"Vetement"> | Date | string
+    updatedAt?: DateTimeFilter<"Vetement"> | Date | string
     lot?: XOR<LotScalarRelationFilter, LotWhereInput>
     type?: XOR<TypeVetementScalarRelationFilter, TypeVetementWhereInput>
   }
@@ -8546,8 +9896,12 @@ export namespace Prisma {
   export type VetementOrderByWithRelationInput = {
     idVetement?: SortOrder
     description?: SortOrder
+    statut?: SortOrder
     lotId?: SortOrder
+    prix?: SortOrderInput | SortOrder
     typeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     lot?: LotOrderByWithRelationInput
     type?: TypeVetementOrderByWithRelationInput
   }
@@ -8558,8 +9912,12 @@ export namespace Prisma {
     OR?: VetementWhereInput[]
     NOT?: VetementWhereInput | VetementWhereInput[]
     description?: StringFilter<"Vetement"> | string
+    statut?: StringFilter<"Vetement"> | string
     lotId?: StringFilter<"Vetement"> | string
+    prix?: FloatNullableFilter<"Vetement"> | number | null
     typeId?: StringFilter<"Vetement"> | string
+    createdAt?: DateTimeFilter<"Vetement"> | Date | string
+    updatedAt?: DateTimeFilter<"Vetement"> | Date | string
     lot?: XOR<LotScalarRelationFilter, LotWhereInput>
     type?: XOR<TypeVetementScalarRelationFilter, TypeVetementWhereInput>
   }, "idVetement">
@@ -8567,11 +9925,17 @@ export namespace Prisma {
   export type VetementOrderByWithAggregationInput = {
     idVetement?: SortOrder
     description?: SortOrder
+    statut?: SortOrder
     lotId?: SortOrder
+    prix?: SortOrderInput | SortOrder
     typeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: VetementCountOrderByAggregateInput
+    _avg?: VetementAvgOrderByAggregateInput
     _max?: VetementMaxOrderByAggregateInput
     _min?: VetementMinOrderByAggregateInput
+    _sum?: VetementSumOrderByAggregateInput
   }
 
   export type VetementScalarWhereWithAggregatesInput = {
@@ -8580,8 +9944,12 @@ export namespace Prisma {
     NOT?: VetementScalarWhereWithAggregatesInput | VetementScalarWhereWithAggregatesInput[]
     idVetement?: StringWithAggregatesFilter<"Vetement"> | string
     description?: StringWithAggregatesFilter<"Vetement"> | string
+    statut?: StringWithAggregatesFilter<"Vetement"> | string
     lotId?: StringWithAggregatesFilter<"Vetement"> | string
+    prix?: FloatNullableWithAggregatesFilter<"Vetement"> | number | null
     typeId?: StringWithAggregatesFilter<"Vetement"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Vetement"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Vetement"> | Date | string
   }
 
   export type PaiementWhereInput = {
@@ -8593,6 +9961,7 @@ export namespace Prisma {
     date?: StringFilter<"Paiement"> | string
     lotId?: StringFilter<"Paiement"> | string
     createdAt?: DateTimeFilter<"Paiement"> | Date | string
+    updatedAt?: DateTimeFilter<"Paiement"> | Date | string
     lot?: XOR<LotScalarRelationFilter, LotWhereInput>
   }
 
@@ -8602,6 +9971,7 @@ export namespace Prisma {
     date?: SortOrder
     lotId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     lot?: LotOrderByWithRelationInput
   }
 
@@ -8614,6 +9984,7 @@ export namespace Prisma {
     date?: StringFilter<"Paiement"> | string
     lotId?: StringFilter<"Paiement"> | string
     createdAt?: DateTimeFilter<"Paiement"> | Date | string
+    updatedAt?: DateTimeFilter<"Paiement"> | Date | string
     lot?: XOR<LotScalarRelationFilter, LotWhereInput>
   }, "idPaiement">
 
@@ -8623,6 +9994,7 @@ export namespace Prisma {
     date?: SortOrder
     lotId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: PaiementCountOrderByAggregateInput
     _avg?: PaiementAvgOrderByAggregateInput
     _max?: PaiementMaxOrderByAggregateInput
@@ -8639,6 +10011,7 @@ export namespace Prisma {
     date?: StringWithAggregatesFilter<"Paiement"> | string
     lotId?: StringWithAggregatesFilter<"Paiement"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Paiement"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Paiement"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -8649,7 +10022,6 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
     createdAt?: Date | string
     updatedAt?: Date | string
     clients?: ClientCreateNestedManyWithoutUserInput
@@ -8663,7 +10035,6 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
     createdAt?: Date | string
     updatedAt?: Date | string
     clients?: ClientUncheckedCreateNestedManyWithoutUserInput
@@ -8677,7 +10048,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clients?: ClientUpdateManyWithoutUserNestedInput
@@ -8691,7 +10061,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clients?: ClientUncheckedUpdateManyWithoutUserNestedInput
@@ -8705,7 +10074,6 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8718,7 +10086,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8731,7 +10098,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8799,6 +10165,7 @@ export namespace Prisma {
     idType?: string
     nom: string
     prix: number
+    etat?: string
     vetements?: VetementCreateNestedManyWithoutTypeInput
   }
 
@@ -8806,6 +10173,7 @@ export namespace Prisma {
     idType?: string
     nom: string
     prix: number
+    etat?: string
     vetements?: VetementUncheckedCreateNestedManyWithoutTypeInput
   }
 
@@ -8813,6 +10181,7 @@ export namespace Prisma {
     idType?: StringFieldUpdateOperationsInput | string
     nom?: StringFieldUpdateOperationsInput | string
     prix?: FloatFieldUpdateOperationsInput | number
+    etat?: StringFieldUpdateOperationsInput | string
     vetements?: VetementUpdateManyWithoutTypeNestedInput
   }
 
@@ -8820,6 +10189,7 @@ export namespace Prisma {
     idType?: StringFieldUpdateOperationsInput | string
     nom?: StringFieldUpdateOperationsInput | string
     prix?: FloatFieldUpdateOperationsInput | number
+    etat?: StringFieldUpdateOperationsInput | string
     vetements?: VetementUncheckedUpdateManyWithoutTypeNestedInput
   }
 
@@ -8827,18 +10197,91 @@ export namespace Prisma {
     idType?: string
     nom: string
     prix: number
+    etat?: string
   }
 
   export type TypeVetementUpdateManyMutationInput = {
     idType?: StringFieldUpdateOperationsInput | string
     nom?: StringFieldUpdateOperationsInput | string
     prix?: FloatFieldUpdateOperationsInput | number
+    etat?: StringFieldUpdateOperationsInput | string
   }
 
   export type TypeVetementUncheckedUpdateManyInput = {
     idType?: StringFieldUpdateOperationsInput | string
     nom?: StringFieldUpdateOperationsInput | string
     prix?: FloatFieldUpdateOperationsInput | number
+    etat?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DepensesCreateInput = {
+    idDepenses?: string
+    beneficiaire: string
+    ordonanceur: string
+    raison: string
+    montant: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DepensesUncheckedCreateInput = {
+    idDepenses?: string
+    beneficiaire: string
+    ordonanceur: string
+    raison: string
+    montant: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DepensesUpdateInput = {
+    idDepenses?: StringFieldUpdateOperationsInput | string
+    beneficiaire?: StringFieldUpdateOperationsInput | string
+    ordonanceur?: StringFieldUpdateOperationsInput | string
+    raison?: StringFieldUpdateOperationsInput | string
+    montant?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepensesUncheckedUpdateInput = {
+    idDepenses?: StringFieldUpdateOperationsInput | string
+    beneficiaire?: StringFieldUpdateOperationsInput | string
+    ordonanceur?: StringFieldUpdateOperationsInput | string
+    raison?: StringFieldUpdateOperationsInput | string
+    montant?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepensesCreateManyInput = {
+    idDepenses?: string
+    beneficiaire: string
+    ordonanceur: string
+    raison: string
+    montant: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DepensesUpdateManyMutationInput = {
+    idDepenses?: StringFieldUpdateOperationsInput | string
+    beneficiaire?: StringFieldUpdateOperationsInput | string
+    ordonanceur?: StringFieldUpdateOperationsInput | string
+    raison?: StringFieldUpdateOperationsInput | string
+    montant?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepensesUncheckedUpdateManyInput = {
+    idDepenses?: StringFieldUpdateOperationsInput | string
+    beneficiaire?: StringFieldUpdateOperationsInput | string
+    ordonanceur?: StringFieldUpdateOperationsInput | string
+    raison?: StringFieldUpdateOperationsInput | string
+    montant?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LotCreateInput = {
@@ -8847,8 +10290,9 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     client: ClientCreateNestedOneWithoutLotsInput
     vetements?: VetementCreateNestedManyWithoutLotInput
     paiements?: PaiementCreateNestedManyWithoutLotInput
@@ -8860,9 +10304,10 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     clientId: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     vetements?: VetementUncheckedCreateNestedManyWithoutLotInput
     paiements?: PaiementUncheckedCreateNestedManyWithoutLotInput
   }
@@ -8875,6 +10320,7 @@ export namespace Prisma {
     solde?: FloatFieldUpdateOperationsInput | number
     statut?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     client?: ClientUpdateOneRequiredWithoutLotsNestedInput
     vetements?: VetementUpdateManyWithoutLotNestedInput
     paiements?: PaiementUpdateManyWithoutLotNestedInput
@@ -8889,6 +10335,7 @@ export namespace Prisma {
     statut?: StringFieldUpdateOperationsInput | string
     clientId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     vetements?: VetementUncheckedUpdateManyWithoutLotNestedInput
     paiements?: PaiementUncheckedUpdateManyWithoutLotNestedInput
   }
@@ -8899,9 +10346,10 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     clientId: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type LotUpdateManyMutationInput = {
@@ -8912,6 +10360,7 @@ export namespace Prisma {
     solde?: FloatFieldUpdateOperationsInput | number
     statut?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LotUncheckedUpdateManyInput = {
@@ -8923,11 +10372,16 @@ export namespace Prisma {
     statut?: StringFieldUpdateOperationsInput | string
     clientId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VetementCreateInput = {
     idVetement?: string
     description: string
+    statut?: string
+    prix?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     lot: LotCreateNestedOneWithoutVetementsInput
     type: TypeVetementCreateNestedOneWithoutVetementsInput
   }
@@ -8935,13 +10389,21 @@ export namespace Prisma {
   export type VetementUncheckedCreateInput = {
     idVetement?: string
     description: string
+    statut?: string
     lotId: string
+    prix?: number | null
     typeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type VetementUpdateInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lot?: LotUpdateOneRequiredWithoutVetementsNestedInput
     type?: TypeVetementUpdateOneRequiredWithoutVetementsNestedInput
   }
@@ -8949,27 +10411,43 @@ export namespace Prisma {
   export type VetementUncheckedUpdateInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
     lotId?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
     typeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VetementCreateManyInput = {
     idVetement?: string
     description: string
+    statut?: string
     lotId: string
+    prix?: number | null
     typeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type VetementUpdateManyMutationInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VetementUncheckedUpdateManyInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
     lotId?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
     typeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaiementCreateInput = {
@@ -8977,6 +10455,7 @@ export namespace Prisma {
     montant: number
     date: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     lot: LotCreateNestedOneWithoutPaiementsInput
   }
 
@@ -8986,6 +10465,7 @@ export namespace Prisma {
     date: string
     lotId: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PaiementUpdateInput = {
@@ -8993,6 +10473,7 @@ export namespace Prisma {
     montant?: FloatFieldUpdateOperationsInput | number
     date?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lot?: LotUpdateOneRequiredWithoutPaiementsNestedInput
   }
 
@@ -9002,6 +10483,7 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     lotId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaiementCreateManyInput = {
@@ -9010,6 +10492,7 @@ export namespace Prisma {
     date: string
     lotId: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PaiementUpdateManyMutationInput = {
@@ -9017,6 +10500,7 @@ export namespace Prisma {
     montant?: FloatFieldUpdateOperationsInput | number
     date?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaiementUncheckedUpdateManyInput = {
@@ -9025,6 +10509,7 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     lotId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9091,7 +10576,6 @@ export namespace Prisma {
     role?: SortOrder
     telephone?: SortOrder
     profilePicture?: SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9104,7 +10588,6 @@ export namespace Prisma {
     role?: SortOrder
     telephone?: SortOrder
     profilePicture?: SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9117,7 +10600,6 @@ export namespace Prisma {
     role?: SortOrder
     telephone?: SortOrder
     profilePicture?: SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9236,6 +10718,7 @@ export namespace Prisma {
     idType?: SortOrder
     nom?: SortOrder
     prix?: SortOrder
+    etat?: SortOrder
   }
 
   export type TypeVetementAvgOrderByAggregateInput = {
@@ -9246,12 +10729,14 @@ export namespace Prisma {
     idType?: SortOrder
     nom?: SortOrder
     prix?: SortOrder
+    etat?: SortOrder
   }
 
   export type TypeVetementMinOrderByAggregateInput = {
     idType?: SortOrder
     nom?: SortOrder
     prix?: SortOrder
+    etat?: SortOrder
   }
 
   export type TypeVetementSumOrderByAggregateInput = {
@@ -9272,6 +10757,44 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type DepensesCountOrderByAggregateInput = {
+    idDepenses?: SortOrder
+    beneficiaire?: SortOrder
+    ordonanceur?: SortOrder
+    raison?: SortOrder
+    montant?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepensesAvgOrderByAggregateInput = {
+    montant?: SortOrder
+  }
+
+  export type DepensesMaxOrderByAggregateInput = {
+    idDepenses?: SortOrder
+    beneficiaire?: SortOrder
+    ordonanceur?: SortOrder
+    raison?: SortOrder
+    montant?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepensesMinOrderByAggregateInput = {
+    idDepenses?: SortOrder
+    beneficiaire?: SortOrder
+    ordonanceur?: SortOrder
+    raison?: SortOrder
+    montant?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepensesSumOrderByAggregateInput = {
+    montant?: SortOrder
   }
 
   export type ClientScalarRelationFilter = {
@@ -9298,6 +10821,7 @@ export namespace Prisma {
     statut?: SortOrder
     clientId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type LotAvgOrderByAggregateInput = {
@@ -9314,6 +10838,7 @@ export namespace Prisma {
     statut?: SortOrder
     clientId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type LotMinOrderByAggregateInput = {
@@ -9325,11 +10850,23 @@ export namespace Prisma {
     statut?: SortOrder
     clientId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type LotSumOrderByAggregateInput = {
     totalAmount?: SortOrder
     solde?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type LotScalarRelationFilter = {
@@ -9345,22 +10882,58 @@ export namespace Prisma {
   export type VetementCountOrderByAggregateInput = {
     idVetement?: SortOrder
     description?: SortOrder
+    statut?: SortOrder
     lotId?: SortOrder
+    prix?: SortOrder
     typeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VetementAvgOrderByAggregateInput = {
+    prix?: SortOrder
   }
 
   export type VetementMaxOrderByAggregateInput = {
     idVetement?: SortOrder
     description?: SortOrder
+    statut?: SortOrder
     lotId?: SortOrder
+    prix?: SortOrder
     typeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type VetementMinOrderByAggregateInput = {
     idVetement?: SortOrder
     description?: SortOrder
+    statut?: SortOrder
     lotId?: SortOrder
+    prix?: SortOrder
     typeId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VetementSumOrderByAggregateInput = {
+    prix?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type PaiementCountOrderByAggregateInput = {
@@ -9369,6 +10942,7 @@ export namespace Prisma {
     date?: SortOrder
     lotId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PaiementAvgOrderByAggregateInput = {
@@ -9381,6 +10955,7 @@ export namespace Prisma {
     date?: SortOrder
     lotId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PaiementMinOrderByAggregateInput = {
@@ -9389,6 +10964,7 @@ export namespace Prisma {
     date?: SortOrder
     lotId?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PaiementSumOrderByAggregateInput = {
@@ -9665,6 +11241,14 @@ export namespace Prisma {
     connect?: TypeVetementWhereUniqueInput
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type LotUpdateOneRequiredWithoutVetementsNestedInput = {
     create?: XOR<LotCreateWithoutVetementsInput, LotUncheckedCreateWithoutVetementsInput>
     connectOrCreate?: LotCreateOrConnectWithoutVetementsInput
@@ -9831,6 +11415,33 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type ClientCreateWithoutUserInput = {
     idClient?: string
     nom: string
@@ -9892,7 +11503,6 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9905,7 +11515,6 @@ export namespace Prisma {
     role?: string
     telephone?: string | null
     profilePicture?: string | null
-    password: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9921,8 +11530,9 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     vetements?: VetementCreateNestedManyWithoutLotInput
     paiements?: PaiementCreateNestedManyWithoutLotInput
   }
@@ -9933,8 +11543,9 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     vetements?: VetementUncheckedCreateNestedManyWithoutLotInput
     paiements?: PaiementUncheckedCreateNestedManyWithoutLotInput
   }
@@ -9968,7 +11579,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9981,7 +11591,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     telephone?: NullableStringFieldUpdateOperationsInput | string | null
     profilePicture?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10014,18 +11623,27 @@ export namespace Prisma {
     statut?: StringFilter<"Lot"> | string
     clientId?: StringFilter<"Lot"> | string
     createdAt?: DateTimeFilter<"Lot"> | Date | string
+    updatedAt?: DateTimeFilter<"Lot"> | Date | string
   }
 
   export type VetementCreateWithoutTypeInput = {
     idVetement?: string
     description: string
+    statut?: string
+    prix?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     lot: LotCreateNestedOneWithoutVetementsInput
   }
 
   export type VetementUncheckedCreateWithoutTypeInput = {
     idVetement?: string
     description: string
+    statut?: string
     lotId: string
+    prix?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type VetementCreateOrConnectWithoutTypeInput = {
@@ -10060,8 +11678,12 @@ export namespace Prisma {
     NOT?: VetementScalarWhereInput | VetementScalarWhereInput[]
     idVetement?: StringFilter<"Vetement"> | string
     description?: StringFilter<"Vetement"> | string
+    statut?: StringFilter<"Vetement"> | string
     lotId?: StringFilter<"Vetement"> | string
+    prix?: FloatNullableFilter<"Vetement"> | number | null
     typeId?: StringFilter<"Vetement"> | string
+    createdAt?: DateTimeFilter<"Vetement"> | Date | string
+    updatedAt?: DateTimeFilter<"Vetement"> | Date | string
   }
 
   export type ClientCreateWithoutLotsInput = {
@@ -10088,13 +11710,21 @@ export namespace Prisma {
   export type VetementCreateWithoutLotInput = {
     idVetement?: string
     description: string
+    statut?: string
+    prix?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     type: TypeVetementCreateNestedOneWithoutVetementsInput
   }
 
   export type VetementUncheckedCreateWithoutLotInput = {
     idVetement?: string
     description: string
+    statut?: string
+    prix?: number | null
     typeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type VetementCreateOrConnectWithoutLotInput = {
@@ -10112,6 +11742,7 @@ export namespace Prisma {
     montant: number
     date: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PaiementUncheckedCreateWithoutLotInput = {
@@ -10119,6 +11750,7 @@ export namespace Prisma {
     montant: number
     date: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PaiementCreateOrConnectWithoutLotInput = {
@@ -10199,6 +11831,7 @@ export namespace Prisma {
     date?: StringFilter<"Paiement"> | string
     lotId?: StringFilter<"Paiement"> | string
     createdAt?: DateTimeFilter<"Paiement"> | Date | string
+    updatedAt?: DateTimeFilter<"Paiement"> | Date | string
   }
 
   export type LotCreateWithoutVetementsInput = {
@@ -10207,8 +11840,9 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     client: ClientCreateNestedOneWithoutLotsInput
     paiements?: PaiementCreateNestedManyWithoutLotInput
   }
@@ -10219,9 +11853,10 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     clientId: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     paiements?: PaiementUncheckedCreateNestedManyWithoutLotInput
   }
 
@@ -10234,12 +11869,14 @@ export namespace Prisma {
     idType?: string
     nom: string
     prix: number
+    etat?: string
   }
 
   export type TypeVetementUncheckedCreateWithoutVetementsInput = {
     idType?: string
     nom: string
     prix: number
+    etat?: string
   }
 
   export type TypeVetementCreateOrConnectWithoutVetementsInput = {
@@ -10266,6 +11903,7 @@ export namespace Prisma {
     solde?: FloatFieldUpdateOperationsInput | number
     statut?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     client?: ClientUpdateOneRequiredWithoutLotsNestedInput
     paiements?: PaiementUpdateManyWithoutLotNestedInput
   }
@@ -10279,6 +11917,7 @@ export namespace Prisma {
     statut?: StringFieldUpdateOperationsInput | string
     clientId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paiements?: PaiementUncheckedUpdateManyWithoutLotNestedInput
   }
 
@@ -10297,12 +11936,14 @@ export namespace Prisma {
     idType?: StringFieldUpdateOperationsInput | string
     nom?: StringFieldUpdateOperationsInput | string
     prix?: FloatFieldUpdateOperationsInput | number
+    etat?: StringFieldUpdateOperationsInput | string
   }
 
   export type TypeVetementUncheckedUpdateWithoutVetementsInput = {
     idType?: StringFieldUpdateOperationsInput | string
     nom?: StringFieldUpdateOperationsInput | string
     prix?: FloatFieldUpdateOperationsInput | number
+    etat?: StringFieldUpdateOperationsInput | string
   }
 
   export type LotCreateWithoutPaiementsInput = {
@@ -10311,8 +11952,9 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     client: ClientCreateNestedOneWithoutLotsInput
     vetements?: VetementCreateNestedManyWithoutLotInput
   }
@@ -10323,9 +11965,10 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     clientId: string
     createdAt?: Date | string
+    updatedAt?: Date | string
     vetements?: VetementUncheckedCreateNestedManyWithoutLotInput
   }
 
@@ -10353,6 +11996,7 @@ export namespace Prisma {
     solde?: FloatFieldUpdateOperationsInput | number
     statut?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     client?: ClientUpdateOneRequiredWithoutLotsNestedInput
     vetements?: VetementUpdateManyWithoutLotNestedInput
   }
@@ -10366,6 +12010,7 @@ export namespace Prisma {
     statut?: StringFieldUpdateOperationsInput | string
     clientId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     vetements?: VetementUncheckedUpdateManyWithoutLotNestedInput
   }
 
@@ -10405,8 +12050,9 @@ export namespace Prisma {
     dateReccup: string
     totalAmount: number
     solde: number
-    statut: string
+    statut?: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type LotUpdateWithoutClientInput = {
@@ -10417,6 +12063,7 @@ export namespace Prisma {
     solde?: FloatFieldUpdateOperationsInput | number
     statut?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     vetements?: VetementUpdateManyWithoutLotNestedInput
     paiements?: PaiementUpdateManyWithoutLotNestedInput
   }
@@ -10429,6 +12076,7 @@ export namespace Prisma {
     solde?: FloatFieldUpdateOperationsInput | number
     statut?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     vetements?: VetementUncheckedUpdateManyWithoutLotNestedInput
     paiements?: PaiementUncheckedUpdateManyWithoutLotNestedInput
   }
@@ -10441,36 +12089,57 @@ export namespace Prisma {
     solde?: FloatFieldUpdateOperationsInput | number
     statut?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VetementCreateManyTypeInput = {
     idVetement?: string
     description: string
+    statut?: string
     lotId: string
+    prix?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type VetementUpdateWithoutTypeInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lot?: LotUpdateOneRequiredWithoutVetementsNestedInput
   }
 
   export type VetementUncheckedUpdateWithoutTypeInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
     lotId?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VetementUncheckedUpdateManyWithoutTypeInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
     lotId?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VetementCreateManyLotInput = {
     idVetement?: string
     description: string
+    statut?: string
+    prix?: number | null
     typeId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PaiementCreateManyLotInput = {
@@ -10478,24 +12147,37 @@ export namespace Prisma {
     montant: number
     date: string
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type VetementUpdateWithoutLotInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: TypeVetementUpdateOneRequiredWithoutVetementsNestedInput
   }
 
   export type VetementUncheckedUpdateWithoutLotInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
     typeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VetementUncheckedUpdateManyWithoutLotInput = {
     idVetement?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    statut?: StringFieldUpdateOperationsInput | string
+    prix?: NullableFloatFieldUpdateOperationsInput | number | null
     typeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaiementUpdateWithoutLotInput = {
@@ -10503,6 +12185,7 @@ export namespace Prisma {
     montant?: FloatFieldUpdateOperationsInput | number
     date?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaiementUncheckedUpdateWithoutLotInput = {
@@ -10510,6 +12193,7 @@ export namespace Prisma {
     montant?: FloatFieldUpdateOperationsInput | number
     date?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaiementUncheckedUpdateManyWithoutLotInput = {
@@ -10517,6 +12201,7 @@ export namespace Prisma {
     montant?: FloatFieldUpdateOperationsInput | number
     date?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

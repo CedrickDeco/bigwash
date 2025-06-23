@@ -1,4 +1,4 @@
-@import './_mixins';
+@import './_mixins.scss';
 * {
 	outline: none;
 	padding: 0;
@@ -7,21 +7,23 @@
 
 body {
 	margin: 0;
-	overflow-y: overlay;
+	overflow-y: scroll;
 	font-family: $body-font;
 	font-size: $normal-font-size;
 	background-color: $bgcol;
 	color: $color_text;
-	height: 100vh;
+	height: 100%;
 	@media screen and (max-width: 380px) {
 	}
 	@media screen and (max-width: 768px) {
-		margin: 0 0 $header-height 0;
+		// margin: 0 0 $header-height 0;
 	}
 }
 
 html {
 	scroll-behavior: smooth;
+	overflow-y: scroll;
+	height: 100%;
 }
 
 button,
@@ -37,6 +39,10 @@ h3 {
 	color: $color_title;
 	font-weight: $font-semi-bold;
 	font-family: $font-title;
+}
+
+.bgc {
+	background-color: $bgnavcol;
 }
 
 ul {

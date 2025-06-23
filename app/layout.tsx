@@ -4,6 +4,11 @@ import localFont from "next/font/local";
 import "./globals.scss";
 import './styles/main.scss';
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import Navbar from "./components/Navbar";
+import DashboardLayout from "./components/DashboardLayout";
+import { Providers } from "./redux/app/providers";
+import Layout from "./components/Layout";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,19 +73,21 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en" data-theme="cupcake">
-      <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={`${livvic.variable} ${livvicBold.variable} ${livvicSemibold.variable} ${livvicMedium.variable} ${overlock.variable} ${overlockBlack.variable} ${overlockBold.variable}  antialiased`}
-        >
-          {/* <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn> */}
-        {children}
-      </body>
+      <html lang="en" data-theme="cupcake">
+        <Providers>
+          <body
+            // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            className={`${livvic.variable} ${livvicBold.variable} ${livvicSemibold.variable} ${livvicMedium.variable} ${overlock.variable} ${overlockBlack.variable} ${overlockBold.variable}  antialiased`}
+            >
+            <DashboardLayout>
+              {children}
+              <Toaster position="top-right" />
+            </DashboardLayout>
+            {/* <Layout>
+          {children}
+        </Layout> */}
+          </body>
+          </Providers>
       </html>
       </ClerkProvider>
   );
