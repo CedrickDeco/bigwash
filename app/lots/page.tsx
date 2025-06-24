@@ -83,7 +83,7 @@ const sortedLots = [...lots].sort((a, b) => {
 
   
 const paginatedLots = sortedLots.slice((page - 1) * perPage, page * perPage);
-	const pageCount = Math.ceil(lots.length / perPage);
+const pageCount = Math.ceil(lots.length / perPage);
 
 
   return (
